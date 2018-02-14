@@ -1,0 +1,21 @@
+{
+  "name": "ceql",
+  "version": "1.0.0",
+  "description": "A CEQL parser in Javascript",
+  "main": "index.js",
+  "repository": "https://github.com/martialblog/ceql.js",
+  "author": "Markus Opolka <markus@martialblog.de>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "es6": "^0.0.7",
+    "eslint": "^4.17.0",
+    "jest": "^22.3.0",
+    "webpack": "^3.11.0"
+  },
+  "scripts": {
+    "test": "jest --config=conf/jest.config.js ",
+    "coverage": "jest --coverage --config=conf/jest.config.js",
+    "lint": "eslint ./src/*.js"
+  }
+}
