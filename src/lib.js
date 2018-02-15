@@ -1,9 +1,11 @@
-const wildcardTable = {
-  '?': '.',
-  '*': '.?',
-  '+': '.+',
-  '[': '(',
-  ']': ')',
+/* eslint-disable no-useless-escape */
+
+const metacharTable = {
+  '\\?': '.',
+  '\\*': '.*',
+  '\\+': '.+',
+  '\\[': '(',
+  '\\]': ')',
   ',': '|'
 };
 
@@ -13,18 +15,20 @@ module.exports = {
     str = str.replace(/\s\s+/g, ' ');
     return str.trim();
   },
-  translateWildcard: function (wildcard) {
-    if (wildcardTable.hasOwnProperty(wildcard)) {
-      return wildcardTable[wildcard];
-    } else {
-      // TODO does that make sense to return the literal?
-      return wildcard;
+  translateMetachars: function (str) {
+    for (let char in metacharTable) {
+      let charReg = new RegExp(char, 'g')
+      str = str.replace(charReg, metacharTable[char]);
     }
+    return str;
   },
   validParentheses: function (str) {
-    return /[(){}\[\]]/.test( str ) &&
-      ( str.match( /\(/g ) || '' ).length == ( str.match( /\)/g ) || '' ).length &&
-      ( str.match( /\[/g ) || '' ).length == ( str.match( /]/g ) || '' ).length &&
-      ( str.match( /{/g ) || '' ).length == ( str.match( /}/g ) || '' ).length;
+    let isValid = true;
+    if (/[(){}\[\]]/.test(str)) {
+      isValid = ( str.match( /\(/g ) || '' ).length == ( str.match( /\)/g ) || '' ).length &&
+        ( str.match( /\[/g ) || '' ).length == ( str.match( /]/g ) || '' ).length &&
+        ( str.match( /{/g ) || '' ).length == ( str.match( /}/g ) || '' ).length;
+    }
+    return isValid;
   }
 };

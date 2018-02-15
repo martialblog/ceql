@@ -20,16 +20,38 @@ test('Testing merge tabs in string', () => {
   expect(lib.sanitizeWhitespaces("foo\t\t\tbar")).toBe('foo bar');
 });
 
-test('Testing wildcard translation', () => {
-  expect(lib.translateWildcard('?')).toBe('.');
-  expect(lib.translateWildcard('*')).toBe('.?');
-  expect(lib.translateWildcard('+')).toBe('.+');
-  expect(lib.translateWildcard('[')).toBe('(');
-  expect(lib.translateWildcard(']')).toBe(')');
-  expect(lib.translateWildcard(',')).toBe('|');
+test('Testing metacharacter translation *', () => {
+  expect(lib.translateMetachars('foob**r')).toBe('foob.*.*r');
+  expect(lib.translateMetachars('f*bar')).toBe('f.*bar');
+  expect(lib.translateMetachars('***')).toBe('.*.*.*');
+  expect(lib.translateMetachars('*')).toBe('.*');
+})
+
+test('Testing metacharacter translation +', () => {
+  expect(lib.translateMetachars('foob++r')).toBe('foob.+.+r');
+  expect(lib.translateMetachars('f+bar')).toBe('f.+bar');
+  expect(lib.translateMetachars('+++')).toBe('.+.+.+');
+  expect(lib.translateMetachars('+')).toBe('.+');
+})
+
+test('Testing metacharacter translation ?', () => {
+  expect(lib.translateMetachars('foob?r')).toBe('foob.r');
+  expect(lib.translateMetachars('f??bar')).toBe('f..bar');
+  expect(lib.translateMetachars('???')).toBe('...');
+  expect(lib.translateMetachars('?')).toBe('.');
+});
+
+test('Testing metacharacter translation [,]', () => {
+  expect(lib.translateMetachars('[,]')).toBe('(|)');
+  expect(lib.translateMetachars('[foo,bar]')).toBe('(foo|bar)');
+  expect(lib.translateMetachars('[]')).toBe('()');
+  expect(lib.translateMetachars(',,,')).toBe('|||');
+  expect(lib.translateMetachars(',')).toBe('|');
 });
 
 test('Testing missing parentheses [](){}', () => {
+  expect(lib.validParentheses('nothingtosee')).toBe(true);
+
   expect(lib.validParentheses('[good]')).toBe(true);
   expect(lib.validParentheses('(good)')).toBe(true);
   expect(lib.validParentheses('{good}')).toBe(true);

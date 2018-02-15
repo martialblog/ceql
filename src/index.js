@@ -1,5 +1,5 @@
-var ceql = require('./ceql');
+const toregex = require('./toregex');
 
 module.exports = {
-  ceql: ceql
+  toregex: toregex
 };
