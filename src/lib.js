@@ -17,7 +17,7 @@ module.exports = {
   },
   translateMetachars: function (str) {
     for (let char in metacharTable) {
-      let charReg = new RegExp(char, 'g')
+      let charReg = new RegExp(char, 'g');
       str = str.replace(charReg, metacharTable[char]);
     }
     return str;

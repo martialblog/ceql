@@ -1,5 +1,7 @@
 const toregex = require('./toregex');
+const validate = require('./validate');
 
 module.exports = {
-  toregex: toregex
+  toregex: toregex,
+  validate: validate
 };
