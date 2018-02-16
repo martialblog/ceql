@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/martialblog/ceql.svg?branch=master)](https://travis-ci.org/martialblog/ceql)
+[![Coverage Status](https://coveralls.io/repos/github/martialblog/ceql/badge.svg?branch=master)](https://coveralls.io/github/martialblog/ceql?branch=master)
+
 # CEQL.js
 
 A CEQL library in Javascript.
