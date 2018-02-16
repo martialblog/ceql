@@ -1,6 +1,6 @@
 # CEQL.js
 
-A CEQL parser in Javascript
+A CEQL library in Javascript.
 
 ## What is CEQL?
 
@@ -11,25 +11,18 @@ CEQL is the Common Elementary Query Language, designed by Stefan Evert as a novi
 
 # Usage
 
-## Installation
-
-```bash
-npm install --save ceql
-```
-
 ## Quick start
 
 ```js
 var ceql = require('ceql');
-var options = {ignoreCase: true};
 
-// Parse a String to CEQL object
-var p = ceql.parse('somestring', options);
+// Transform CEQL Query into RegExp
+var p = ceql.toregex('some[string,orelse]');
 console.log(p)
-> {word: 'somestring', primary: undef, secondary: undef}
+> /some(string|orelse)/
 
 // Validate a given String (is valid CEQL input)
-var v = ceql.validate('somestring');
+var v = ceql.validate('super_VERB');
 console.log(v)
 > true
 ```
