@@ -8,6 +8,8 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-minify-webpack-plugin": "^0.3.0",
+    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "es6": "^0.0.7",
     "eslint": "^4.17.0",
@@ -15,6 +17,7 @@
     "webpack": "^3.11.0"
   },
   "scripts": {
+    "build": "webpack --config=conf/webpack.config.js --progress  --colors",
     "test": "jest --config=conf/jest.config.js ",
     "coverage": "jest --coverage --config=conf/jest.config.js",
     "lint": "eslint ./src/*.js"
