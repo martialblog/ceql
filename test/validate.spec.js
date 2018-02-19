@@ -5,9 +5,13 @@ test('Throws TypeError with no String', () => {
   expect(failMe).toThrow(TypeError);
 });
 
-test('Throws SyntaxError at mismatch', () => {
-  function failMe() {validate('{close me')}
-  expect(failMe).toThrow(SyntaxError);
+test('Testing parentheses mismatch', () => {
+  expect(validate('[')).toBe(false);
+  expect(validate('{')).toBe(false);
+  expect(validate('(')).toBe(false);
+  expect(validate('}')).toBe(false);
+  expect(validate('}')).toBe(false);
+  expect(validate(')')).toBe(false);
 });
 
 test('Testing validate lemma', () => {

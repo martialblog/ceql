@@ -11,7 +11,7 @@ module.exports = function (input) {
   }
 
   if (!lib.validParentheses(input)) {
-    throw new SyntaxError('Invalid input. Missmatched parentheses');
+    return valid;
   }
 
   str = lib.sanitizeWhitespaces(input);
