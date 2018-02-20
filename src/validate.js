@@ -20,16 +20,16 @@ module.exports = function (input) {
   // TODO: We could reuse one RegExp
   if (str.startsWith('{')) {
     // Lemma
-    valid = /{[a-z0-9]+}/.test(str);
+    valid = /{[a-z0-9À-ÿ]+}/.test(str);
   } else if (/_{/.test(str)) {
     // Wildcard or Literal with simple POS
-    valid = /(^[A-Za-z0-9,\(\)\[\]\?\+\*\\]+(:d)?)?_{[A-Z$]+}$/.test(str);
+    valid = /(^[A-Za-z0-9À-ÿ,\(\)\[\]\?\+\*\\]+(:d)?)?_{[A-Z$]+}$/.test(str);
   } else if (/_[A-Z]/.test(str)) {
     // Wildcard or Literal with POS
-    valid = /(^[A-Za-z0-9,\(\)\[\]\?\+\*\\]+(:d)?)?_[A-Z0-9,\[\]\+\*]+$/.test(str);
+    valid = /(^[A-Za-z0-9À-ÿ,\(\)\[\]\?\+\*\\]+(:d)?)?_[A-Z0-9,\[\]\+\*]+$/.test(str);
   } else {
     // Wildcard or Literal
-    valid = /^[A-Za-z0-9,\(\)\[\]\?\+\*\\]+(:d)?/.test(str);
+    valid = /^[A-Za-z0-9À-ÿ,\(\)\[\]\?\+\*\\]+(:d)?/.test(str);
   }
 
   return valid;
