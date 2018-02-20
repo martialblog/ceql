@@ -12,6 +12,16 @@ CEQL is the Common Elementary Query Language, designed by Stefan Evert as a novi
 - https://cqpweb.lancs.ac.uk/doc/CQPweb-CEQL-manual.html
 - http://cwb.sourceforge.net/ceql.php
 
+# Support
+
+| Annotation | Syntax | Supported |
+|------------|--------|-----------|
+| Word       | pattern    | :white_check_mark: |
+| Primary    | _pattern   | :white_check_mark: |
+| Secondary  | {pattern}  | :white_check_mark: |
+| Tertiary   | _{pattern} | :white_check_mark: |
+| Combo      | {pattern1/pattern2}  | :x:  |
+
 # Usage
 
 ## Quick start
