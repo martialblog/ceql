@@ -7,6 +7,11 @@ module.exports = {
     'ceql': './src/index.js',
     'ceql.min': './src/index.js'
   },
+  module: {
+    loaders: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+    ]
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
